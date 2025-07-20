@@ -16,36 +16,70 @@
             height: 100vh;
         }
 
-        .spinner {
-            width: 60px;
-            height: 60px;
+        .spinner::before {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            translate: -50% -50%;
+            width: 100%;
+            height: 100%;
+            border: 6px aqua dotted;
             border-radius: 50%;
-            background-color: transparent;
-            border-top: 5px solid aqua;
-            border-right: 5px solid aqua;
-            border-bottom: 5px solid aqua;
-            border-left: 5px solid transparent;
-            animation-name: spin;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
-            animation-timing-function: ease;
-            box-shadow: 0px 0px 55px 0px cyan;
+            animation: rotate 4s ease infinite, scale 2s ease infinite alternate;
+            box-shadow: 0px 0px 40px 0px aqua
         }
 
-        @keyframes spin {
+        .spinner::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border-top: 5px solid aqua;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid transparent;
+            animation: rotate 4s ease infinite;
+        }
+
+        .spinner {
+            position: relative;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+            width: 150px;
+            height: 150px;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        @keyframes rotate {
             0% {
                 rotate: 0deg;
             }
-
             100% {
                 rotate: 360deg;
             }
         }
+
+        @keyframes scale {
+            0% {
+                scale: 1;
+            }
+            100% {
+                scale: 1.8;
+            }
+        }
+
     </style>
 </head>
 
 <body>
-    <div class="spinner"></div>
+    <div class="spinner">Loading...</div>
 </body>
 
 </html>
